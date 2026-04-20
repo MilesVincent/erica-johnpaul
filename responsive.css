@@ -15,6 +15,8 @@
 
 /* ─── TABLET  (≤ 900px) ───────────────────────────────── */
 @media (max-width: 900px) {
+  
+  .container { padding: 0 24px; }
 
   /* Header / Nav */
   #main-nav {
@@ -41,10 +43,12 @@
   .nav-link {
     display: block;
     font-size: .9rem;
-    padding: 12px 0;
+    padding: 16px 24px;
     color: var(--text) !important;
     border-bottom: 1px solid var(--border);
     letter-spacing: .1em;
+    cursor: pointer;
+    transition: color .3s ease;
   }
   .nav-link::after { display: none; }
   .nav-link:hover, .nav-link.active { color: var(--accent) !important; }
@@ -54,12 +58,13 @@
     margin-top: 12px;
     color: var(--accent) !important;
     border: 1px solid var(--accent) !important;
-    padding: 10px 20px !important;
+    padding: 14px 28px !important;
     border-radius: 2px;
+    cursor: pointer;
   }
   .nav-cta:hover { background: var(--accent) !important; color: #fff !important; }
 
-  .hamburger { display: flex; }
+  .hamburger { display: flex; padding: 8px; cursor: pointer; }
   #site-header:not(.scrolled) .hamburger span { background: #fff; }
   #site-header.scrolled .hamburger span { background: var(--text); }
 
@@ -139,6 +144,8 @@
 
 /* ─── MOBILE  (≤ 700px) ───────────────────────────────── */
 @media (max-width: 700px) {
+  
+  .container { padding: 0 20px; }
 
   /* Hero */
   .hero-title { font-size: clamp(2.4rem, 12vw, 4rem); }
@@ -186,11 +193,13 @@
 /* ─── SMALL MOBILE  (≤ 480px) ────────────────────────── */
 @media (max-width: 480px) {
 
-  :root { --section-pad: 64px; }
+  :root { --section-pad: 48px 0; }
 
   .hero-eyebrow { font-size: 1rem; }
   .hero-title { font-size: clamp(2rem, 13vw, 3rem); flex-direction: column; gap: 0; }
   .hero-amp { font-size: 1.4rem; }
+  
+  .container { padding: 0 16px; }
 
   .section-title { font-size: clamp(1.8rem, 8vw, 2.4rem); }
 
