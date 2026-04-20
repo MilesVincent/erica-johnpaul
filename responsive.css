@@ -75,9 +75,14 @@
     background: rgba(0,0,0,.45);
     z-index: 998;
     opacity: 0; visibility: hidden;
+    pointer-events: none;
     transition: opacity .4s, visibility .4s;
   }
-  body.menu-open::after { opacity: 1; visibility: visible; }
+  body.menu-open::after { 
+    opacity: 1; 
+    visibility: visible; 
+    pointer-events: auto;
+  }
 
   /* Couple */
   .couple-grid {
@@ -168,6 +173,32 @@
   .event-card:last-child { grid-column: auto; max-width: 100%; }
 
   /* People */
+  .filter-tabs { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+    margin-bottom: 24px;
+  }
+  .filter-btn {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .3s ease;
+    background: var(--bg-card);
+    color: var(--text);
+  }
+  .filter-btn:active,
+  .filter-btn:focus {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .filter-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
   .people-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
 
   /* Gallery */
@@ -182,6 +213,15 @@
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .form-row .form-group { margin-bottom: 16px; }
   .rsvp-form { padding: 24px 18px; }
+  
+  /* Form buttons */
+  button[type="submit"],
+  .btn-primary {
+    min-height: 44px;
+    min-width: 100%;
+    padding: 14px 24px !important;
+    font-size: 1rem;
+  }
 
   /* Timeline (already single-column from 900px, just tighten) */
   .timeline-body h3 { font-size: 1.4rem; }
@@ -214,6 +254,14 @@
 
   /* Countdown compact */
   .cd-item span { font-size: 1.6rem; }
+
+  /* Filter buttons - better touch targets */
+  .filter-btn {
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    min-height: 44px;
+    min-width: 44px;
+  }
 
   /* Nav tighter */
   .nav-list { padding: 60px 24px 24px; }

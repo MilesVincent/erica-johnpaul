@@ -100,7 +100,12 @@ function debounce(fn, delay = 100) {
   });
 
   // Close when a nav link is clicked
-  $$('.nav-link').forEach(link => link.addEventListener('click', closeMenu));
+  $$('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      closeMenu();
+      // Allow anchor navigation to work
+    });
+  });
 
   // Close when clicking the overlay (body::after pseudo-element area)
   document.addEventListener('click', e => {
