@@ -133,8 +133,8 @@ ul { list-style: none; }
   z-index: 900;
   height: var(--header-h);
   transition: background .35s var(--ease), box-shadow .35s var(--ease), height .35s var(--ease);
-  backdrop-filter: blur(10px);
   pointer-events: auto;
+  will-change: transform;
 }
 #site-header.scrolled {
   background: var(--bg-card);
