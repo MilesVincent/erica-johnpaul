@@ -16,11 +16,11 @@
   --shadow:      rgba(60,35,20,.08);
   --shadow-lg:   rgba(60,35,20,.15);
 
-  /* Color accent — rose (default, overridden by data-color) */
-  --accent:      #c9788a;
-  --accent-dark: #a85a6c;
-  --accent-soft: #f5e2e6;
-  --accent-rgb:  201,120,138;
+  /* Color accent — gold (default) */
+  --accent:      #c9a96e;
+  --accent-dark: #a88440;
+  --accent-soft: #f5eddc;
+  --accent-rgb:  201,169,110;
 
   /* Typography */
   --font-display: 'Cormorant Garamond', Georgia, serif;
@@ -51,12 +51,8 @@
   --shadow-lg: rgba(0,0,0,.4);
 }
 
-/* Color palettes */
-[data-color="rose"]  { --accent:#c9788a; --accent-dark:#a85a6c; --accent-soft:#f5e2e6; --accent-rgb:201,120,138; }
+/* Color palettes - GOLD ONLY */
 [data-color="gold"]  { --accent:#c9a96e; --accent-dark:#a88440; --accent-soft:#f5eddc; --accent-rgb:201,169,110; }
-[data-color="sage"]  { --accent:#7a9e7e; --accent-dark:#5c7f60; --accent-soft:#ddeede; --accent-rgb:122,158,126; }
-[data-color="blush"] { --accent:#d9909a; --accent-dark:#b86e7a; --accent-soft:#fce8eb; --accent-rgb:217,144,154; }
-[data-color="mauve"] { --accent:#9b7fa8; --accent-dark:#7a5f88; --accent-soft:#ede0f4; --accent-rgb:155,127,168; }
 
 /* ─── RESET & BASE ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
