@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-color="rose">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erica &amp; John Paul — Forever Begins</title>
+  <!-- Google Fonts: Cormorant Garamond (display) + Jost (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="responsive.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════ PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-rings">
+        <span class="ring ring-1"></span>
+        <span class="ring ring-2"></span>
+      </div>
+      <p class="preloader-text">Erica <span>&amp;</span> John Paul</p>
+      <div class="preloader-bar"><span></span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ THEME SWITCHER -->
+  <div id="theme-switcher" class="theme-panel">
+    <button id="theme-toggle-btn" class="theme-trigger" aria-label="Open theme panel">
+      <i class="fa-solid fa-palette"></i>
+    </button>
+    <div class="theme-drawer">
+      <p class="theme-label">Mode</p>
+      <div class="mode-btns">
+        <button class="mode-btn active" data-mode="light"><i class="fa-regular fa-sun"></i> Light</button>
+        <button class="mode-btn" data-mode="dark"><i class="fa-regular fa-moon"></i> Dark</button>
+      </div>
+      <p class="theme-label">Color</p>
+      <div class="color-swatches">
+        <button class="swatch active" data-color="rose" style="background:#c9788a" title="Rose"></button>
+        <button class="swatch" data-color="gold" style="background:#c9a96e" title="Gold"></button>
+        <button class="swatch" data-color="sage" style="background:#7a9e7e" title="Sage"></button>
+        <button class="swatch" data-color="blush" style="background:#e8b4b8" title="Blush"></button>
+        <button class="swatch" data-color="mauve" style="background:#9b7fa8" title="Mauve"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ HEADER / NAV -->
+  <header id="site-header">
+    <div class="header-inner">
+      <a href="#home" class="logo" aria-label="Home">
+        <span class="logo-text">E <em>&amp;</em> JP</span>
+      </a>
+      <nav id="main-nav">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#couple" class="nav-link">Us</a></li>
+          <li><a href="#story" class="nav-link">Our Story</a></li>
+          <li><a href="#events" class="nav-link">Events</a></li>
+          <li><a href="#people" class="nav-link">People</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#rsvp" class="nav-link nav-cta">RSVP</a></li>
+        </ul>
+      </nav>
+      <button id="hamburger" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════ HERO / SLIDER -->
+  <section id="home" class="hero">
+    <div class="slider" id="hero-slider">
+      <div class="slide active" style="background-image:url('Cover1.jpg')"></div>
+      <div class="slide" style="background-image:url('Cover3.JPG')"></div>
+      <div class="slide" style="background-image:url('Cover2.JPG')"></div>
+      <div class="slide" style="background-image:url('Cover5.jpg')"></div>
+      <div class="slide-overlay"></div>
+    </div>
+    <button class="slider-btn slider-prev" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="slider-btn slider-next" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="slider-dots" id="slider-dots"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal-up">We're getting married</p>
+      <h1 class="hero-title reveal-up" style="--delay:.1s">
+        <span class="name-left">Erica</span>
+        <span class="hero-amp">&amp;</span>
+        <span class="name-right">John Paul</span>
+      </h1>
+      <p class="hero-date reveal-up" style="--delay:.2s">
+        <i class="fa-regular fa-calendar-heart"></i>&nbsp;
+        September 18, 2026 &nbsp;&middot;&nbsp; Friday 4:00 PM
+      </p>
+      <div class="hero-divider reveal-up" style="--delay:.3s">
+        <span></span><i class="fa-solid fa-diamond"></i><span></span>
+      </div>
+      <div class="countdown reveal-up" style="--delay:.4s" id="countdown">
+        <div class="cd-item"><span id="cd-days">--</span><small>Days</small></div>
+        <div class="cd-item"><span id="cd-hours">--</span><small>Hours</small></div>
+        <div class="cd-item"><span id="cd-mins">--</span><small>Minutes</small></div>
+        <div class="cd-item"><span id="cd-secs">--</span><small>Seconds</small></div>
+      </div>
+      <a href="#rsvp" class="btn-primary reveal-up" style="--delay:.5s">Send RSVP</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ COUPLE -->
+  <section id="couple" class="section couple-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Two souls, one heart</p>
+        <h2 class="section-title">Meet the <em>Couple</em></h2>
+        <div class="title-ornament"><span></span><i class="fa-solid fa-heart"></i><span></span></div>
+      </div>
+      <div class="couple-grid">
+        <!-- Bride -->
+        <article class="person-card reveal-left">
+          <div class="person-photo-wrap">
+            <div class="person-photo" style="background-image:url('Bride.JPG'); background-size: 125%; background-position: center;"></div>
+            <div class="photo-frame"></div>
+          </div>
+          <div class="person-info">
+            <h3 class="person-name">Erica Cajefe</h3>
+            <p class="person-role">The Bride</p>
+            <p class="person-bio">I have always been a dreamer, who walks by faith and believes in the beauty of God's timing. But my most beautiful dream came true when I found the man who truly understands my heart. He is the grace I prayed for. I promise to stand by his side through every season, loving him with sincerity and supporting him with all that I am. Whatever our future holds, we walk into it together bound by faith and hand-in-hand, forever</p>
+            <div class="social-links">
+              <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            </div>
+          </div>
+        </article>
+        <!-- Divider -->
+        <div class="couple-divider reveal-up">
+          <div class="divider-line"></div>
+          <div class="divider-hearts">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart big"></i>
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <div class="divider-line"></div>
+        </div>
+        <!-- Groom -->
+        <article class="person-card reveal-right">
+          <div class="person-photo-wrap">
+            <div class="person-photo" style="background-image:url('Groom.JPG')"></div>
+            <div class="photo-frame"></div>
+          </div>
+          <div class="person-info">
+            <h3 class="person-name">John Paul Sta. Juana</h3>
+            <p class="person-role">The Groom</p>
+            <p class="person-bio">I may not promise a perfect life, but I promise to love her with sincerity, to stand by her in all seasons, and to grow with her in grace. With this, I am certain that our love guided by God will endure.</p>
+            <div class="social-links">
+              <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ LOVE STORY -->
+  <section id="story" class="section story-section">
+    <div class="story-bg-pattern"></div>
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">How it all began</p>
+        <h2 class="section-title">Our <em>Love Story</em></h2>
+        <div class="title-ornament"><span></span><i class="fa-solid fa-heart"></i><span></span></div>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item reveal-left">
+          <div class="timeline-img" style="background-image:url('Church.jpg')"></div>
+          <div class="timeline-body">
+            <span class="timeline-date">July 2021</span>
+            <h3>First Meeting</h3>
+            <p>A beautiful morning, <em>beneath the quiet skies of Talalora, Samar</em> the gentle rhythm of a Mass began to fill the air. Sunlight streamed through the windows as two hearts stood in the church, wrapped in a moment both sacred and still. In that serene hush, their story found its most beautiful beginning.</p>
+          </div>
+          <div class="timeline-node"><i class="fa-solid fa-book-open"></i></div>
+        </article>
+        <article class="timeline-item timeline-item--right reveal-right">
+          <div class="timeline-img" style="background-image:url('1st.JPG')"></div>
+          <div class="timeline-body">
+            <span class="timeline-date">August 2021</span>
+            <h3>First Date</h3>
+            <p>They first met in a quiet church, where a simple hello turned into an easy, unexpected connection. Afterward, they strolled along the seawall, talking about their own history as the breeze and soft waves kept them company. Somewhere between the laughs and stories, something real began to grow.</p>
+          </div>
+          <div class="timeline-node"><i class="fa-solid fa-music"></i></div>
+        </article>
+        <article class="timeline-item reveal-left">
+          <div class="timeline-img" style="background-image:url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&q=80')"></div>
+          <div class="timeline-body">
+            <span class="timeline-date">3 Years later</span>
+            <h3>The huge step</h3>
+            <p>Years later, both hearts decided to step up in life and moved to a new place to make thier dreams come true. Lifting each other up through every challenge that comes thier way.</p>
+          </div>
+          <div class="timeline-node"><i class="fa-solid fa-house-heart"></i></div>
+        </article>
+        <article class="timeline-item timeline-item--right reveal-right">
+          <div class="timeline-img" style="background-image:url('proposal.jpg'); background-position: center 15%;"></div>
+          <div class="timeline-body">
+            <span class="timeline-date">April 2026</span>
+            <h3>The Proposal</h3>
+            <p>In the quiet of Cebu Metropolitan Cathedral, he asked her to spend forever with him. With soft prayers in the air and hearts racing, the moment felt both intimate and sacred. In that familiar place, she said yes, and their story turned a beautiful new page.</p>
+          </div>
+          <div class="timeline-node"><i class="fa-solid fa-ring"></i></div>
+        </article>
+        <article class="timeline-item reveal-left">
+          <div class="timeline-img" style="background-image:url('Married.jpg'); background-position: center 15%;"></div>
+          <div class="timeline-body">
+            <span class="timeline-date">September 2026</span>
+            <h3>The Wedding</h3>
+            <p>And now we arrive here — this time with family, laughter, and quiet anticipation. As they stood hand in hand, the journey that began with a simple meeting came full circle. Surrounded by love and promise, they say “I do” and step into forever together.</p>
+          </div>
+          <div class="timeline-node active"><i class="fa-solid fa-heart"></i></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ EVENTS -->
+  <section id="events" class="section events-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Mark your calendar</p>
+        <h2 class="section-title">Wedding <em>Events</em></h2>
+        <div class="title-ornament"><span></span><i class="fa-solid fa-heart"></i><span></span></div>
+      </div>
+      <div class="events-grid">
+        <article class="event-card reveal-up" style="--delay:.05s">
+          <div class="event-icon"><i class="fa-solid fa-church"></i></div>
+          <div class="event-content">
+            <span class="event-tag">Ceremony</span>
+            <h3>Wedding Ceremony</h3>
+            <ul class="event-details">
+              <li><i class="fa-regular fa-calendar"></i> September 18, 2026</li>
+              <li><i class="fa-regular fa-clock"></i> 4:00 PM &mdash; 5:30 PM</li>
+              <li><i class="fa-solid fa-location-dot"></i> Archdiocesan Shrine of St. Thérèse of the Child Jesus <br><small>Lahug, Cebu</small></li>
+              <li><i class="fa-solid fa-shirt"></i> Formal / Black Tie</li>
+            </ul>
+            <a href="https://www.google.com/maps/place/Archdiocesan+Shrine+of+St.+Th%C3%A9r%C3%A8se+of+the+Child+Jesus/@10.3295034,123.9003312,1272m/data=!3m1!1e3!4m6!3m5!1s0x33a999269b2146d5:0x462d30e860ab63f2!8m2!3d10.331065!4d123.9004938!16s%2Fg%2F1tfh25fw?entry=ttu&g_ep=EgoyMDI2MDQxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="event-link"><i class="fa-solid fa-map-pin"></i> Get Directions</a>
+          </div>
+        </article>
+        <article class="event-card event-card--alt reveal-up" style="--delay:.15s">
+          <div class="event-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+          <div class="event-content">
+            <span class="event-tag">Reception</span>
+            <h3>Dinner &amp; Celebration</h3>
+            <ul class="event-details">
+              <li><i class="fa-regular fa-calendar"></i> September 18, 2026</li>
+              <li><i class="fa-regular fa-clock"></i> 7:00 PM &mdash; 10:00 PM</li>
+              <li><i class="fa-solid fa-location-dot"></i> Jayraldine's Catering Service<br><small>Quijano Compound, V Rama Ave, Cebu City</small></li>
+              <li><i class="fa-solid fa-shirt"></i> Formal / Cocktail</li>
+            </ul>
+            <a href="https://www.google.com/maps/place/Jayraldine's+Catering+Service/@10.3056148,123.8861666,267m/data=!3m1!1e3!4m6!3m5!1s0x33a99998189466f1:0xe48d353dee62547!8m2!3d10.3058049!4d123.8855599!16s%2Fg%2F11qbp_590b!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDQxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="event-link"><i class="fa-solid fa-map-pin"></i> Get Directions</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ PEOPLE -->
+  <section id="people" class="section people-section">
+    <div class="people-bg"></div>
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Our beloved circle</p>
+        <h2 class="section-title">Wedding <em>Party</em></h2>
+        <div class="title-ornament"><span></span><i class="fa-solid fa-heart"></i><span></span></div>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-btn" data-filter="sponsors">Principal Sponsors</button>
+        <button class="filter-btn" data-filter="celebrant">Celebrant</button>
+        <button class="filter-btn" data-filter="groomsmen">Groomsmen</button>
+        <button class="filter-btn" data-filter="bridesmaids">Bridesmaids</button>
+      </div>
+      <div class="people-grid" id="people-grid">
+        <article class="people-card" data-group="sponsors">
+          <div class="people-photo" style="background-image:url('Tito.jpg')"></div>
+          <div class="people-info"><h4>Engr. Aldrin Ygrubay</h4><p>Principal Sponsor</p></div>
+        </article>
+        <article class="people-card" data-group="sponsors">
+          <div class="people-photo" style="background-image:url('Marites.jpg'); background-position: center 65%; background-size: cover;"></div>
+          <div class="people-info"><h4>Mrs. Marites Abad</h4><p>Principal Sponsor</p></div>
+        </article>
+        <article class="people-card" data-group="sponsors">
+          <div class="people-photo" style="background-image:url('Fidel.png')"></div>
+          <div class="people-info"><h4>Atty. Fidel & Mrs. Ann Amacna</h4><p>Principal Sponsor</p></div>
+        </article>
+        <article class="people-card" data-group="sponsors">
+          <div class="people-photo" style="background-image:url('Antonino.jpg'); background-size: 180%; background-position: center 70%;"></div>
+          <div class="people-info"><h4>Hon. Antonino & Wife</h4><p>Principal Sponsor</p></div>
+        </article>
+        <article class="people-card" data-group="sponsors">
+          <div class="people-photo" style="background-image:url('Quisquisan.png'); background-position: center right 22%; background-size: cover;"></div>
+          <div class="people-info"><h4>PLt. Lemuel & Mrs. Dolly Quisquisan</h4><p>Principal Sponsor</p></div>
+        </article>
+        <article class="people-card" data-group="sponsors">
+          <div class="people-photo" style="background-image:url('Cesar.png')"></div>
+          <div class="people-info"><h4>Dr. Cesar Sabenicio</h4><p>Principal Sponsor</p></div>
+        </article>
+        <article class="people-card" data-group="sponsors">
+          <div class="people-photo" style="background-image:url('Zenaida.jpg')"></div>
+          <div class="people-info"><h4>Ms. Zenaida Gutierrez</h4><p>Principal Sponsor</p></div>
+        </article>
+        <article class="people-card" data-group="sponsors">
+          <div class="people-photo" style="background-image:url('Ramonida.jpg')"></div>
+          <div class="people-info"><h4>Mr. & Mrs Ramonida</h4><p>Principal Sponsor</p></div>
+        </article>
+        <article class="people-card" data-group="celebrant">
+          <div class="people-photo" style="background-image:url('Christian2.jpg'); background-position: center right; background-size: cover;"></div>
+          <div class="people-info"><h4>Rev. Fr. Christian Castillo</h4><p>Celebrant</p></div>
+        </article>
+        <article class="people-card" data-group="celebrant">
+          <div class="people-photo" style="background-image:url('Junmark2.png'); background-position: center right; background-size: cover;"></div>
+          <div class="people-info"><h4>Rev. Fr. Junmark Guillemer</h4><p>Cocelebrant</p></div>
+        </article>
+        <article class="people-card" data-group="celebrant">
+          <div class="people-photo" style="background-image:url('Francis2.png'); background-position: center left; background-size: cover;"></div>
+          <div class="people-info"><h4>Rev. Fr. Francis Uy</h4><p>Cocelebrant</p></div>
+        </article>
+        <article class="people-card" data-group="celebrant">
+          <div class="people-photo" style="background-image:url('Fernando.jpg')"></div>
+          <div class="people-info"><h4>Rev. Fr. Fernando Tan</h4><p>Cocelebrant</p></div>
+        </article>
+        <article class="people-card" data-group="groomsmen">
+          <div class="people-photo" style="background-image:url('Llego.jpg')"></div>
+          <div class="people-info"><h4>Christian Llego</h4><p>Best Man</p></div>
+        </article>
+        <article class="people-card" data-group="groomsmen">
+          <div class="people-photo" style="background-image:url('Miles.jpg')"></div>
+          <div class="people-info"><h4>Miles Vincent Bereño</h4><p>Groomsman</p></div>
+        </article>
+        <article class="people-card" data-group="groomsmen">
+          <div class="people-photo" style="background-image:url('Rendel.jpg')"></div>
+          <div class="people-info"><h4>Rendel Macabenta</h4><p>Groomsman</p></div>
+        </article>
+        <article class="people-card" data-group="groomsmen">
+          <div class="people-photo" style="background-image:url('Darvey.jpg'); background-position: center right 30%; background-size: cover;"></div>
+          <div class="people-info"><h4>Darvy Nhel Bere</h4><p>Groomsman</p></div>
+        </article>
+        <article class="people-card" data-group="groomsmen">
+          <div class="people-photo" style="background-image:url('Khenley.jpg'); background-size: 180%; background-position: center right 50%; background-position: center 70%;"></div>
+          <div class="people-info"><h4>Khenly Dianto</h4><p>Groomsman</p></div>
+        </article>
+        <article class="people-card" data-group="bridesmaids">
+          <div class="people-photo" style="background-image:url('Jessan.jpg')"></div>
+          <div class="people-info"><h4>Jessan Marco</h4><p>Maid of Honor</p></div>
+        </article>
+        <article class="people-card" data-group="bridesmaids">
+          <div class="people-photo" style="background-image:url('Rhica.jpg'); background-size: 180%; background-position: center 70%;"></div>
+          <div class="people-info"><h4>Rhica Cabilte</h4><p>Bridesmaid</p></div>
+        </article>
+        <article class="people-card" data-group="bridesmaids">
+          <div class="people-photo" style="background-image:url('Mery.jpg'); background-size: 100%; background-position: center 60%;"></div>
+          <div class="people-info"><h4>Mery Rose Mangging</h4><p>Bridesmaid</p></div>
+        </article>
+        <article class="people-card" data-group="bridesmaids">
+          <div class="people-photo" style="background-image:url('Jeziel.jpg')"></div>
+          <div class="people-info"><h4>Jezile Potal</h4><p>Bridesmaid</p></div>
+        </article>
+        <article class="people-card" data-group="bridesmaids">
+          <div class="people-photo" style="background-image:url('Mila.jpg')"></div>
+          <div class="people-info"><h4>Mila Mhel Cajefe</h4><p>Bridesmaid</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ GALLERY -->
+  <section id="gallery" class="section gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Captured moments</p>
+        <h2 class="section-title">Our <em>Gallery</em></h2>
+        <div class="title-ornament"><span></span><i class="fa-solid fa-heart"></i><span></span></div>
+      </div>
+    </div>
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- Gallery Item 1 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 10%" / "center 20%" etc for fine tuning -->
+      <figure class="gallery-item reveal-up" id="gallery-1" style="--delay:.05s" data-src="10.jpg">
+        <div class="gallery-img" style="background-image:url('10.jpg'); background-position: center 33%;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+      <!-- Gallery Item 2 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 10%" / "center 20%" etc for fine tuning -->
+      <figure class="gallery-item reveal-up" id="gallery-2" style="--delay:.1s" data-src="Cover4.jpg">
+        <div class="gallery-img" style="background-image:url('Cover4.jpg'); background-position: center center;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+      <!-- Gallery Item 3 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 20%" / "center 30%" etc for fine tuning -->
+      <figure class="gallery-item tall reveal-up" id="gallery-3" style="--delay:.15s" data-src="1.jpg">
+        <div class="gallery-img" style="background-image:url('1.jpg'); background-position: center 10%;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+      <!-- Gallery Item 4 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 10%" / "center 20%" etc for fine tuning -->
+      <figure class="gallery-item reveal-up" id="gallery-4" style="--delay:.2s" data-src="date.jpg">
+        <div class="gallery-img" style="background-image:url('date.jpg'); background-position: center center;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+      <!-- Gallery Item 5 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 10%" / "center 20%" etc for fine tuning -->
+      <figure class="gallery-item wide reveal-up" id="gallery-5" style="--delay:.25s" data-src="Cover1.jpg">
+        <div class="gallery-img" style="background-image:url('Cover1.jpg'); background-position: center 30%;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+      <!-- Gallery Item 6 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 10%" / "center 20%" etc for fine tuning -->
+      <figure class="gallery-item reveal-up" id="gallery-6" style="--delay:.3s" data-src="7.jpg">
+        <div class="gallery-img" style="background-image:url('7.jpg'); background-position: center 30%;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+      <!-- Gallery Item 7 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 10%" / "center 20%" etc for fine tuning -->
+      <figure class="gallery-item reveal-up" id="gallery-7" style="--delay:.35s" data-src="13.jpg">
+        <div class="gallery-img" style="background-image:url('13.jpg'); background-position: center 30%;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+      <!-- Gallery Item 8 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 10%" / "center 20%" etc for fine tuning -->
+      <figure class="gallery-item tall reveal-up" id="gallery-8" style="--delay:.4s" data-src="Bride.JPG">
+        <div class="gallery-img" style="background-image:url('Bride.JPG'); background-position: center center;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+      <!-- Gallery Item 9 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 10%" / "center 20%" etc for fine tuning -->
+      <figure class="gallery-item reveal-up" id="gallery-9" style="--delay:.45s" data-src="3rd.jpg">
+        <div class="gallery-img" style="background-image:url('3rd.jpg'); background-position: center center;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+      <!-- Gallery Item 10 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 10%" / "center 20%" etc for fine tuning -->
+      <figure class="gallery-item tall reveal-up" id="gallery-10" style="--delay:.5s" data-src="proposal.JPG">
+        <div class="gallery-img" style="background-image:url('proposal.JPG'); background-position: center 10%;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+      <!-- Gallery Item 11 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 10%" / "center 20%" etc for fine tuning -->
+      <figure class="gallery-item reveal-up" id="gallery-11" style="--delay:.55s" data-src="12.jpg">
+        <div class="gallery-img" style="background-image:url('12.jpg'); background-position: center 45%;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+      <!-- Gallery Item 12 — Adjust background-position to move image: "center top" (top), "center center" (middle), "center bottom" (bottom), or use "center 10%" / "center 20%" etc for fine tuning -->
+      <figure class="gallery-item reveal-up" id="gallery-12" style="--delay:.6s" data-src="2.jpg">
+        <div class="gallery-img" style="background-image:url('2.jpg'); background-position: center 55%;"></div>
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </figure>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <button class="lightbox-close" id="lb-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <button class="lightbox-nav lb-prev" id="lb-prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="lightbox-nav lb-next" id="lb-next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="lightbox-img-wrap">
+        <div class="lb-loader"><i class="fa-solid fa-circle-notch fa-spin"></i></div>
+        <img id="lb-img" src="" alt="Gallery image" />
+      </div>
+      <p class="lb-counter" id="lb-counter"></p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ RSVP -->
+  <section id="rsvp" class="section rsvp-section">
+    <div class="rsvp-bg"></div>
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Join the celebration</p>
+        <h2 class="section-title">Send Your <em>RSVP</em></h2>
+        <div class="title-ornament"><span></span><i class="fa-solid fa-heart"></i><span></span></div>
+        <p class="rsvp-deadline">Kindly respond by <strong>August 1, 2025</strong></p>
+      </div>
+      <div class="rsvp-wrap">
+        <div class="rsvp-deco reveal-left">
+          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80" alt="Wedding flowers" />
+          <div class="rsvp-quote">
+            <i class="fa-solid fa-quote-left"></i>
+            <p>"In every sacrifice you make for each other, you make Christ present in your home."</p>
+            <cite>&mdash; Fr. AL</cite>
+          </div>
+        </div>
+        <!-- RSVP Form — sends to email via FormSubmit -->
+        <form id="rsvp-form" class="rsvp-form reveal-right" novalidate
+              action="https://formsubmit.co/milesvincent.bereno@gmail.com" method="POST" aria-label="RSVP Form">
+          <input type="hidden" name="_captcha" value="false">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="rsvp-name">Full Name <span>*</span></label>
+              <input type="text" id="rsvp-name" name="name" placeholder="Your full name" required autocomplete="name" />
+              <span class="form-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="rsvp-email">Email Address <span>*</span></label>
+              <input type="email" id="rsvp-email" name="email" placeholder="your@email.com" required autocomplete="email" />
+              <span class="form-error"></span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="rsvp-guests">Number of Guests <span>*</span></label>
+              <select id="rsvp-guests" name="guests" required>
+                <option value="" disabled selected>Select guests</option>
+                <option value="1">1 &mdash; Just me</option>
+                <option value="2">2 &mdash; Me + 1</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+              </select>
+              <span class="form-error"></span>
+            </div>
+            <div class="form-group">
+              <label>Attendance <span>*</span></label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="attendance" value="yes" required />
+                  <span><i class="fa-solid fa-circle-check"></i> Joyfully accepts</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="attendance" value="no" />
+                  <span><i class="fa-solid fa-circle-xmark"></i> Regretfully declines</span>
+                </label>
+              </div>
+              <span class="form-error" id="attendance-error"></span>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="rsvp-message">Leave a Message</label>
+            <textarea id="rsvp-message" name="message" rows="4" placeholder="Share your wishes for the couple&hellip;"></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-submit">
+            <span class="btn-text">Send RSVP</span>
+            <span class="btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
+          </button>
+          <div class="form-success" id="form-success" hidden>
+            <i class="fa-solid fa-heart"></i>
+            <h4>Thank you, we can't wait to see you!</h4>
+            <p>Your RSVP has been received. We'll be in touch with more details soon.</p>
+          </div>
+          <div class="form-fail" id="form-fail" hidden>
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <p>Something went wrong. Please try again or email us directly.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-petals">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="footer-names">Erica <em>&amp;</em> John Paul</span>
+        <span class="footer-date">18 &middot; IX &middot; 2026</span>
+      </div>
+      <p class="footer-message">Thank you for being part of our story.<br>We love you more than words can say.</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#home">Home</a>
+        <a href="#couple">Us</a>
+        <a href="#story">Story</a>
+        <a href="#events">Events</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#rsvp">RSVP</a>
+      </nav>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 MilesVinci_Kun.</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-top" class="back-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
