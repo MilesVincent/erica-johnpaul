@@ -246,8 +246,7 @@ function debounce(fn, delay = 100) {
     if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
   }, { passive: true });
 
-  // Initialize on first slide
-  updateMobileLogoColor(slides[0]);
+  // Keep white as starting color, update only on slide change
   resetTimer();
 })();
 
