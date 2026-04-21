@@ -16,6 +16,58 @@
   .theme-panel  { display: none !important; }
 }
 
+/* Hidden by default on desktop — Show on mobile */
+#mobile-header { display: none; }
+
+@media (max-width: 1024px) {
+  #mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    position: fixed;
+    top: 0;
+    left: 0; right: 0;
+    z-index: 940;
+    
+    height: 60px;
+    padding: 0 clamp(16px, 4vw, 28px);
+    
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .mobile-logo {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+  }
+
+  .mobile-logo-text {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    font-weight: 500;
+    letter-spacing: .06em;
+    color: var(--text);
+    transition: color .25s;
+  }
+
+  .mobile-logo-text em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  /* Adjust body padding to account for mobile header */
+  body {
+    padding-top: 60px;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
 
 /* ═══════════════════════════════════════════════════════════════
    ★  BOTTOM NAVIGATION BAR
