@@ -7,47 +7,11 @@
 
 
 /* ═══════════════════════════════════════════════════════════════
-   0 ─ MOBILE: SHOW LOGO IN HEADER, HIDE NAVIGATION & THEME PANEL
+   0 ─ MOBILE: HIDE HEADER & THEME PANEL
    Navigation is handled entirely by the bottom nav bar on mobile.
 ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  #site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 900;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bg-card);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 2px 8px var(--shadow);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  
-  #site-header.scrolled {
-    background: var(--bg-card);
-    height: 56px;
-    box-shadow: 0 2px 8px var(--shadow);
-  }
-  
-  .header-inner {
-    padding: 0 16px;
-    justify-content: center;
-  }
-  
-  .logo-text {
-    font-size: 1.2rem;
-    color: var(--text);
-  }
-  
-  .logo-text em {
-    color: var(--accent);
-  }
-  
+  #site-header  { display: none !important; }
   #main-nav     { display: none !important; }
   .theme-panel  { display: none !important; }
 }
@@ -207,9 +171,8 @@
   /* RSVP never shows the dot indicator */
   .bnav-item.bnav-rsvp::after { display: none; }
 
-  /* Push page content to account for header and bottom bar */
+  /* Push page content up so the bar never covers it */
   body {
-    padding-top: 56px;
     padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
   }
 }
@@ -221,9 +184,6 @@
 @media (max-width: 1024px) {
 
   .container { padding-inline: clamp(20px, 4vw, 40px); }
-  
-  /* Adjust scroll padding for mobile header */
-  html { scroll-padding-top: 56px; }
 
   #site-header:not(.scrolled) {
     background: linear-gradient(
