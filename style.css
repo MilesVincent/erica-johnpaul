@@ -56,11 +56,7 @@
 
 /* ─── RESET & BASE ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { 
-  scroll-behavior: smooth; 
-  font-size: 16px; 
-  scroll-padding-top: 100px;
-}
+html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 100px; }
 body {
   font-family: var(--font-body);
   background: var(--bg);
@@ -915,21 +911,6 @@ input, select, textarea {
   transition: border-color .25s, box-shadow .25s;
   pointer-events: auto;
   cursor: text;
-}
-
-input[type="radio"], input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  border: 2px solid var(--border);
-  border-radius: 3px;
-  background: var(--bg);
-  transition: border-color .25s, background .25s;
-}
-
-input[type="radio"]:checked, input[type="checkbox"]:checked {
-  background: var(--accent);
-  border-color: var(--accent);
 }
 
 input:focus, select:focus, textarea:focus {
