@@ -208,55 +208,9 @@
   /* RSVP never shows the dot indicator */
   .bnav-item.bnav-rsvp::after { display: none; }
 
-  /* iOS-specific optimizations */
-  html {
-    /* Prevent zoom on input focus in iOS Safari */
-    font-size: 16px;
-  }
-  
+  /* Push page content up so the bar never covers it */
   body {
-    /* Only pad for bottom navigation - header is now overlay */
-    padding-top: 0;
     padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
-    /* Smooth scrolling momentum on iOS */
-    -webkit-overflow-scrolling: touch;
-    /* Prevent text selection issues */
-    -webkit-user-select: none;
-    user-select: none;
-    /* Fix font rendering */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    /* Prevent callout menu on long press */
-    -webkit-touch-callout: none;
-  }
-  
-  /* Allow text selection on clickable content */
-  a, button, .nav-link, .bnav-item {
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  /* iOS input field styling */
-  input, textarea, select {
-    font-size: 16px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 8px;
-    padding: 12px;
-  }
-  
-  input:focus, textarea:focus, select:focus {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-  
-  /* iOS button optimization */
-  button, .btn-primary, .bnav-item {
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
   }
 }
 
@@ -597,67 +551,6 @@
 ═══════════════════════════════════════════════════════════════ */
 @supports (padding: env(safe-area-inset-bottom)) {
   #site-footer { padding-bottom: env(safe-area-inset-bottom,0px); }
-}
-
-
-/* ═══════════════════════════════════════════════════════════════
-   6 ─ iOS LANDSCAPE ORIENTATION
-   Optimize layout for iOS devices in landscape mode (especially iPhone)
-═══════════════════════════════════════════════════════════════ */
-@media (max-height: 500px) and (orientation: landscape) {
-  /* Reduce header height in landscape */
-  #site-header {
-    height: 48px !important;
-    padding-top: max(0px, env(safe-area-inset-top)) !important;
-  }
-  
-  /* Adjust body padding for landscape */
-  body {
-    padding-top: 0 !important;
-    padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)) !important;
-  }
-  
-  /* Compact bottom navigation in landscape */
-  #bottom-nav {
-    height: calc(48px + env(safe-area-inset-bottom, 0px)) !important;
-  }
-  
-  .bnav-item {
-    padding: 4px 2px 2px !important;
-    font-size: .5rem !important;
-  }
-  
-  .bnav-item i {
-    font-size: 1rem !important;
-  }
-  
-  /* Hero section adjustment for landscape */
-  .hero {
-    min-height: 400px;
-  }
-  
-  /* Section padding adjustment */
-  section {
-    padding: clamp(32px, 4vw, 48px) clamp(16px, 3vw, 32px) !important;
-  }
-}
-
-
-/* ═══════════════════════════════════════════════════════════════
-   7 ─ iOS Safari Specific Fixes
-═══════════════════════════════════════════════════════════════ */
-@media (hover: none) and (pointer: coarse) {
-  /* iOS touch devices */
-  a, button, .btn-primary, .bnav-item, .nav-link {
-    /* Ensure proper touch target size */
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  /* Prevent double-tap zoom delays on clickable elements */
-  a, button, input, select, textarea {
-    touch-action: manipulation;
-  }
 }
 
 
