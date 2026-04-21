@@ -109,9 +109,12 @@ function debounce(fn, delay = 100) {
 
   // Close when clicking the overlay (body::after pseudo-element area)
   document.addEventListener('click', e => {
-    if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== hamburger) {
-      closeMenu();
-    }
+    if (nav.classList.contains('open') &&
+  !nav.contains(e.target) &&
+  !hamburger.contains(e.target)
+) {
+  closeMenu();
+}
   });
 
   // Close on Escape
