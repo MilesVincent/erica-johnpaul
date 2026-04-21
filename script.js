@@ -205,12 +205,6 @@ function debounce(fn, delay = 100) {
     timer = setInterval(next, INTERVAL);
   }
 
-  // Controls
-  const prevBtn = $('.slider-prev');
-  const nextBtn = $('.slider-next');
-  if (prevBtn) prevBtn.addEventListener('click', prev);
-  if (nextBtn) nextBtn.addEventListener('click', next);
-
   // Keyboard
   document.addEventListener('keydown', e => {
     if ($('#lightbox').classList.contains('open')) return; // don't conflict with lightbox

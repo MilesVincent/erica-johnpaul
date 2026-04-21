@@ -270,23 +270,7 @@ ul { list-style: none; }
   );
 }
 
-/* Slider controls */
-.slider-btn {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  z-index: 10;
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.12);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,.2);
-  color: #fff;
-  font-size: .85rem;
-  display: flex; align-items: center; justify-content: center;
-  transition: background .25s, transform .25s;
-}
-.slider-btn:hover { background: rgba(255,255,255,.25); transform: translateY(-50%) scale(1.08); }
-.slider-prev { left: clamp(16px, 3vw, 40px); }
-.slider-next { right: clamp(16px, 3vw, 40px); }
+
 
 .slider-dots {
   position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
