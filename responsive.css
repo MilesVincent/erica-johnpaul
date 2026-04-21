@@ -60,7 +60,13 @@
 
   /* Adjust scroll padding for mobile anchors */
   html {
-    scroll-padding-top: 60px;
+    scroll-padding-top: 0;
+  }
+
+  /* Adjust hero to fit better with fixed header */
+  .hero {
+    margin-top: -60px;
+    padding-top: 60px;
   }
 }
 
