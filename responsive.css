@@ -33,9 +33,11 @@
     height: 60px;
     padding: 0 clamp(16px, 4vw, 28px);
     
-    background: var(--bg-card);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    background: rgba(var(--bg-card), 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(var(--border), 0.3);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
   .mobile-logo {
