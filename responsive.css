@@ -58,13 +58,9 @@
     font-style: normal;
   }
 
-  /* Adjust body padding to account for mobile header */
-  body {
-    padding-top: 60px;
-  }
-
-  body.menu-open {
-    overflow: hidden;
+  /* Adjust scroll padding for mobile anchors */
+  html {
+    scroll-padding-top: 60px;
   }
 }
 
