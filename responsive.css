@@ -51,13 +51,23 @@
     font-size: clamp(1rem, 4vw, 1.2rem);
     font-weight: 500;
     letter-spacing: .06em;
-    color: var(--text);
-    transition: color .25s;
+    color: #fff;
+    transition: color .35s ease;
   }
 
   .mobile-logo-text em {
-    color: var(--accent);
+    color: rgba(255, 255, 255, .8);
     font-style: normal;
+    transition: color .35s ease;
+  }
+
+  /* When background is light, use dark text */
+  .mobile-logo-text.light-bg {
+    color: var(--text);
+  }
+
+  .mobile-logo-text.light-bg em {
+    color: var(--accent);
   }
 
   /* Adjust scroll padding for mobile anchors */

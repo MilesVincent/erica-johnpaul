@@ -129,6 +129,69 @@ function debounce(fn, delay = 100) {
   let timer;
   const INTERVAL = 5500;
 
+  // Mobile header logo color detection
+  const mobileLogoText = $('.mobile-logo-text');
+
+  /** Detect background brightness and update logo color */
+  function updateMobileLogoColor(slide) {
+    if (!mobileLogoText) return;
+
+    const bgImage = window.getComputedStyle(slide).backgroundImage;
+    if (!bgImage || bgImage === 'none') {
+      mobileLogoText.classList.remove('light-bg');
+      return;
+    }
+
+    // Extract URL from url('...')
+    const urlMatch = bgImage.match(/url\(['"]?([^'")]+)['"]?\)/);
+    if (!urlMatch) {
+      mobileLogoText.classList.remove('light-bg');
+      return;
+    }
+
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = urlMatch[1];
+
+    img.onload = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+
+        // Get center pixels for better brightness detection
+        const imgData = ctx.getImageData(
+          canvas.width * 0.25, canvas.height * 0.25,
+          canvas.width * 0.5, canvas.height * 0.5
+        );
+        const data = imgData.data;
+
+        // Calculate average luminance
+        let luminance = 0;
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+          // Standard luminance formula
+          luminance += (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        }
+        luminance /= (data.length / 4);
+
+        // If bright background (luminance > 0.5), use dark text
+        mobileLogoText.classList.toggle('light-bg', luminance > 0.5);
+      } catch (e) {
+        // Fallback for CORS issues
+        mobileLogoText.classList.remove('light-bg');
+      }
+    };
+
+    img.onerror = () => {
+      mobileLogoText.classList.remove('light-bg');
+    };
+  }
+
   // Build dots
   slides.forEach((_, i) => {
     const dot = document.createElement('button');
@@ -146,6 +209,7 @@ function debounce(fn, delay = 100) {
     current = (index + slides.length) % slides.length;
     slides[current].classList.add('active');
     getDots()[current].classList.add('active');
+    updateMobileLogoColor(slides[current]);
     resetTimer();
   }
 
@@ -182,6 +246,8 @@ function debounce(fn, delay = 100) {
     if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
   }, { passive: true });
 
+  // Initialize on first slide
+  updateMobileLogoColor(slides[0]);
   resetTimer();
 })();
 
