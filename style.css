@@ -56,7 +56,14 @@
 
 /* ─── RESET & BASE ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 100px; }
+html { 
+  scroll-behavior: smooth; 
+  font-size: 16px; 
+  scroll-padding-top: 100px;
+  /* iOS safe area support */
+  padding-left: max(0px, env(safe-area-inset-left));
+  padding-right: max(0px, env(safe-area-inset-right));
+}
 body {
   font-family: var(--font-body);
   background: var(--bg);
@@ -64,11 +71,47 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   transition: background .35s var(--ease), color .35s var(--ease);
+  /* iOS momentum scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Font rendering optimization */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 body.menu-open { overflow: hidden; }
-img { max-width: 100%; display: block; }
-a { text-decoration: none; color: inherit; }
-button { cursor: pointer; border: none; background: none; font-family: inherit; }
+img { 
+  max-width: 100%; 
+  display: block;
+  /* Prevent image selection on iOS */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+a { 
+  text-decoration: none; 
+  color: inherit;
+  /* Improve tap targets on iOS */
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+button { 
+  cursor: pointer; 
+  border: none; 
+  background: none; 
+  font-family: inherit;
+  /* iOS optimizations */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  /* Ensure minimum touch target size on mobile */
+  min-height: 44px;
+  min-width: 44px;
+}
 ul { list-style: none; }
 
 /* ─── PRELOADER ────────────────────────────────────────── */
@@ -911,6 +954,32 @@ input, select, textarea {
   transition: border-color .25s, box-shadow .25s;
   pointer-events: auto;
   cursor: text;
+  /* iOS optimizations */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-user-select: text;
+  user-select: text;
+  /* Prevent zoom on input focus on iOS */
+  font-size: 16px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid var(--border);
+  border-radius: 3px;
+  background: var(--bg);
+  transition: border-color .25s, background .25s;
+}
+
+input[type="radio"]:checked, input[type="checkbox"]:checked {
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 input:focus, select:focus, textarea:focus {
@@ -918,8 +987,21 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 3px rgba(var(--accent-rgb),.12);
 }
 input.error, select.error, textarea.error { border-color: #d9534f; }
-textarea { resize: vertical; min-height: 110px; }
-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+textarea { 
+  resize: vertical; 
+  min-height: 110px;
+  /* iOS momentum scrolling for textarea */
+  -webkit-overflow-scrolling: touch;
+}
+select { 
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); 
+  background-repeat: no-repeat; 
+  background-position: right 14px center; 
+  padding-right: 40px; 
+}
 
 .form-error { font-size: .76rem; color: #d9534f; margin-top: 5px; min-height: 18px; }
 
