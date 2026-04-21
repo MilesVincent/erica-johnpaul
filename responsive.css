@@ -277,6 +277,19 @@
   }
   #site-header.scrolled { height: var(--header-h); }
 
+  /* Logo */
+  .logo-text {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    color: var(--text);
+    transition: color .25s;
+  }
+  .logo-text em { color: var(--accent); font-style: normal; }
+  #site-header:not(.scrolled) .logo-text { color: #fff; }
+  #site-header:not(.scrolled) .logo-text em { color: rgba(255,255,255,.8); }
+
   /* Hero */
   .hero { min-height: 100svh; }
   .hero-content { padding-inline: clamp(16px,6vw,32px); width: 100%; max-width: 100%; }
@@ -402,6 +415,9 @@
   }
 
   .container { padding-inline: clamp(14px,5vw,22px); }
+
+  /* Logo */
+  .logo-text { font-size: 1rem; }
 
   /* Hero */
   .hero-eyebrow { font-size: clamp(.88rem,3.8vw,1.05rem); }
