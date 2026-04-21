@@ -206,8 +206,31 @@ ul { list-style: none; }
 #site-header:not(.scrolled) .nav-cta { border-color: rgba(255,255,255,.6); color: #fff !important; }
 #site-header:not(.scrolled) .nav-cta:hover { background: rgba(255,255,255,.15); }
 
-/* Hamburger */
+/* Hamburger — hidden on desktop */
 .hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+
+/* Nav: force off-screen on mobile so it never renders as a visible
+   block in the header row. Full drawer styling is in responsive.css. */
+@media (max-width: 900px) {
+  #main-nav {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: min(300px, 85vw);
+    transform: translateX(110%);
+    visibility: hidden;
+    pointer-events: none;
+    background: var(--bg-card);
+    z-index: 999;
+    overflow-y: auto;
+  }
+  #main-nav.open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .hamburger { display: flex; }
+}
+
 .hamburger span {
   display: block; width: 24px; height: 2px;
   background: var(--text);
