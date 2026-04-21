@@ -145,6 +145,11 @@
   .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+  /* ── Hide top header bar on mobile ── */
+  #site-header {
+    display: none !important;
+  }
+
   /* ── Scrim ── */
   body::after {
     content: '';

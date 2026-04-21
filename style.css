@@ -137,9 +137,14 @@ ul { list-style: none; }
   will-change: transform;
 }
 #site-header.scrolled {
-  background: var(--bg-card);
+  background: rgba(var(--bg-card-rgb, 255,255,255), 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 2px 24px var(--shadow);
   height: 62px;
+}
+[data-theme="dark"] #site-header.scrolled {
+  background: rgba(42,35,32, 0.75);
 }
 .header-inner {
   max-width: var(--container);
