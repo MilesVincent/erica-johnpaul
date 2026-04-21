@@ -7,162 +7,13 @@
 
 
 /* ═══════════════════════════════════════════════════════════════
-   0 ─ MOBILE-FIRST NAV LOCK
-   Force the drawer completely off-screen at ALL viewport widths
-   where the hamburger is shown. This runs before every other
-   rule so no layout pass ever paints it as an in-flow block.
+   0 ─ MOBILE: HIDE HEADER & THEME PANEL
+   Navigation is handled entirely by the bottom nav bar on mobile.
 ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-
-  /* ── Slide-in drawer ── */
-  #main-nav {
-    position: fixed;
-    inset: 0 0 0 auto;
-    width: clamp(260px, 75vw, 320px);
-    height: 100%;
-    transform: translateX(105%);
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 1000;
-    background: var(--bg-card);
-    border-left: 1px solid var(--border);
-    box-shadow: -20px 0 60px rgba(0,0,0,.22);
-    transition:
-      transform  .38s cubic-bezier(.4,0,.2,1),
-      opacity    .38s cubic-bezier(.4,0,.2,1),
-      visibility .38s;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-  }
-  #main-nav.open {
-    transform: translateX(0);
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  /* ── Drawer nav list ── */
-  .nav-list {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 0 !important;
-    width: 100%;
-    padding-top: calc(var(--header-h, 76px) + 8px);
-    padding-bottom: env(safe-area-inset-bottom, 24px);
-    margin: 0;
-    list-style: none;
-  }
-  .nav-list li { width: 100%; }
-
-  .nav-link {
-    display: flex !important;
-    align-items: center;
-    width: 100%;
-    padding: 16px 28px !important;
-    font-size: .82rem !important;
-    font-weight: 500;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--text) !important;
-    background: transparent;
-    border-bottom: 1px solid var(--border);
-    border-left: 3px solid transparent;
-    text-decoration: none;
-    transition: color .22s ease, background .22s ease,
-                border-left-color .22s ease, padding-left .22s ease;
-    position: relative;
-  }
-  .nav-link::after { display: none !important; }
-  .nav-link:active,
-  .nav-link:focus-visible {
-    color: var(--accent) !important;
-    background: rgba(var(--accent-rgb),.06);
-    border-left-color: var(--accent);
-    outline: none;
-  }
-  .nav-link.active {
-    color: var(--accent) !important;
-    background: rgba(var(--accent-rgb),.08);
-    border-left-color: var(--accent);
-  }
-
-  /* RSVP button inside drawer */
-  .nav-cta {
-    display: block !important;
-    margin: 20px 24px 4px !important;
-    width: calc(100% - 48px);
-    padding: 14px 20px !important;
-    text-align: center;
-    font-size: .82rem !important;
-    font-weight: 600;
-    letter-spacing: .14em;
-    color: #fff !important;
-    background: var(--accent) !important;
-    border: none !important;
-    border-left: none !important;
-    border-radius: 3px;
-    transition: background .22s ease, transform .22s ease !important;
-  }
-  .nav-cta.active,
-  .nav-cta:active {
-    background: var(--accent-dark) !important;
-    border-left-color: transparent !important;
-  }
-
-  /* ── Hamburger ── */
-  .hamburger {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    width: 44px; height: 44px;
-    padding: 0;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    z-index: 1001;
-    -webkit-tap-highlight-color: transparent;
-    appearance: none;
-    -webkit-appearance: none;
-  }
-  .hamburger:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .hamburger span {
-    display: block;
-    width: 22px; height: 2px;
-    border-radius: 2px;
-    transition: transform .3s cubic-bezier(.4,0,.2,1),
-                opacity .3s ease, background .3s ease;
-  }
-  #site-header:not(.scrolled) .hamburger span { background: #fff; }
-  #site-header.scrolled       .hamburger span { background: var(--text); }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  /* ── Hide top header bar on mobile ── */
-  #site-header {
-    display: none !important;
-  }
-
-  /* ── Scrim ── */
-  body::after {
-    content: '';
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,.5);
-    z-index: 999;
-    opacity: 0; visibility: hidden; pointer-events: none;
-    transition: opacity .38s ease, visibility .38s ease;
-  }
-  body.menu-open::after  { opacity: 1; visibility: visible; pointer-events: auto; }
-  body.menu-open         { overflow: hidden; }
-  #site-header           { z-index: 1001; }
-  .theme-panel           { display: none !important; }
+  #site-header  { display: none !important; }
+  #main-nav     { display: none !important; }
+  .theme-panel  { display: none !important; }
 }
 
 
@@ -607,12 +458,6 @@
   /* Section */
   .section-title { font-size: clamp(1.65rem,8.5vw,2.2rem); }
 
-  /* Drawer */
-  #main-nav  { width: clamp(240px,82vw,300px); }
-  .nav-list  { padding-top: calc(var(--header-h,56px) + 6px); }
-  .nav-link  { padding: 15px 22px !important; font-size: .78rem !important; }
-  .nav-cta   { margin: 16px 20px 2px !important; width: calc(100% - 40px); }
-
   /* Bottom nav adjustments */
   #bottom-nav { height: calc(52px + env(safe-area-inset-bottom,0px)); }
   .bnav-item  { font-size: .54rem; }
@@ -650,10 +495,6 @@
   .event-card   { padding: 18px 13px; }
   .event-details li { font-size: .78rem; }
 
-  #main-nav  { width: 88vw; }
-  .nav-link  { padding: 14px 18px !important; font-size: .75rem !important; }
-  .nav-cta   { margin: 14px 16px 2px !important; width: calc(100% - 32px); }
-
   .section-title { font-size: clamp(1.5rem,9vw,2rem); }
   .eyebrow       { font-size: .9rem; }
 
@@ -670,7 +511,6 @@
 ═══════════════════════════════════════════════════════════════ */
 @supports (padding: env(safe-area-inset-bottom)) {
   #site-footer { padding-bottom: env(safe-area-inset-bottom,0px); }
-  #main-nav    { padding-bottom: env(safe-area-inset-bottom,0px); }
 }
 
 

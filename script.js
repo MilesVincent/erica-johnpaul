@@ -87,54 +87,6 @@ function debounce(fn, delay = 100) {
   onScroll(); // run once on load
 })();
 
-/* ─── 3. HAMBURGER / MOBILE NAV ────────────────────────── */
-(function initMobileNav() {
-  const hamburger = $('#hamburger');
-  const nav       = $('#main-nav');
-  if (!hamburger || !nav) return;
-
-  function openMenu() {
-    hamburger.classList.add('open');
-    nav.classList.add('open');
-    document.body.classList.add('menu-open');
-    hamburger.setAttribute('aria-expanded', 'true');
-  }
-
-  function closeMenu() {
-    hamburger.classList.remove('open');
-    nav.classList.remove('open');
-    document.body.classList.remove('menu-open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  }
-
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.contains('open') ? closeMenu() : openMenu();
-  });
-
-  // Close when a nav link is clicked
-  $$('.nav-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      closeMenu();
-      // Allow anchor navigation to work
-    });
-  });
-
-  // Close when clicking the overlay (body::after pseudo-element area)
-  document.addEventListener('click', e => {
-    if (nav.classList.contains('open') &&
-  !nav.contains(e.target) &&
-  !hamburger.contains(e.target)
-) {
-  closeMenu();
-}
-  });
-
-  // Close on Escape
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && nav.classList.contains('open')) closeMenu();
-  });
-})();
-
 /* ─── 4. SMOOTH-SCROLL & ACTIVE NAV LINK ──────────────── */
 (function initSmoothScroll() {
   // Override default anchor scroll to account for fixed header height
@@ -204,6 +156,12 @@ function debounce(fn, delay = 100) {
     clearInterval(timer);
     timer = setInterval(next, INTERVAL);
   }
+
+  // Controls
+  const prevBtn = $('.slider-prev');
+  const nextBtn = $('.slider-next');
+  if (prevBtn) prevBtn.addEventListener('click', prev);
+  if (nextBtn) nextBtn.addEventListener('click', next);
 
   // Keyboard
   document.addEventListener('keydown', e => {
