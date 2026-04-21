@@ -61,8 +61,10 @@ function debounce(fn, delay = 100) {
   function onScroll() {
     const y = window.scrollY;
     header.classList.toggle('scrolled', y > 50);
-    // Optional: hide header on fast scroll down, show on scroll up
-    if (y > 200) {
+    // Hide header on fast scroll-down only on larger screens.
+    // On mobile (≤900px) always keep it visible so hamburger stays accessible.
+    const isMobile = window.innerWidth <= 900;
+    if (!isMobile && y > 200) {
       header.style.transform = y > lastScroll && y - lastScroll > 8
         ? 'translateY(-100%)' : 'translateY(0)';
     } else {
