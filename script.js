@@ -481,7 +481,79 @@ function debounce(fn, delay = 100) {
   });
 })();
 
-/* ─── 12. THEME SWITCHER ───────────────────────────────── */
+/* ─── 12. BOTTOM NAVIGATION BAR ───────────────────────── */
+(function initBottomNav() {
+
+  // Only inject on mobile viewports
+  if (window.innerWidth > 1024) return;
+
+  /* Tab definitions — label, FA icon class, target section ID */
+  const tabs = [
+    { label: 'Home',    icon: 'fa-solid fa-house',          href: '#home'    },
+    { label: 'Us',      icon: 'fa-solid fa-heart',          href: '#couple'  },
+    { label: 'Story',   icon: 'fa-solid fa-book-open-reader',href: '#story'  },
+    { label: 'Events',  icon: 'fa-solid fa-church',         href: '#events'  },
+    { label: 'Gallery', icon: 'fa-solid fa-images',         href: '#gallery' },
+    { label: 'RSVP',    icon: 'fa-solid fa-envelope-open-text', href: '#rsvp', rsvp: true },
+  ];
+
+  /* Build the bar */
+  const bar = document.createElement('nav');
+  bar.id = 'bottom-nav';
+  bar.setAttribute('aria-label', 'Bottom navigation');
+
+  tabs.forEach(tab => {
+    const a = document.createElement('a');
+    a.href = tab.href;
+    a.className = 'bnav-item' + (tab.rsvp ? ' bnav-rsvp' : '');
+    a.setAttribute('aria-label', tab.label);
+    a.innerHTML = `<i class="${tab.icon}" aria-hidden="true"></i><span>${tab.label}</span>`;
+
+    /* Smooth-scroll with header offset (reuses CSS var) */
+    a.addEventListener('click', e => {
+      const target = document.querySelector(tab.href);
+      if (!target) return;
+      e.preventDefault();
+      const headerH = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--header-h')
+      ) || 60;
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - headerH,
+        behavior: 'smooth'
+      });
+    });
+
+    bar.appendChild(a);
+  });
+
+  document.body.appendChild(bar);
+
+  /* Keep the active tab in sync with the visible section */
+  const sections  = [...document.querySelectorAll('section[id]')];
+  const bnavItems = [...bar.querySelectorAll('.bnav-item')];
+
+  function syncActive() {
+    const scrollY  = window.scrollY;
+    const winH     = window.innerHeight;
+
+    // Find which section occupies most of the viewport
+    let current = sections[0]?.id || 'home';
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= winH * 0.45) current = sec.id;
+    });
+
+    bnavItems.forEach(item => {
+      const href = item.getAttribute('href');
+      item.classList.toggle('active', href === `#${current}`);
+    });
+  }
+
+  window.addEventListener('scroll', syncActive, { passive: true });
+  syncActive(); // run once on load
+})();
+
+/* ─── 13. THEME SWITCHER ───────────────────────────────── */
 (function initTheme() {
   const panel      = $('#theme-switcher');
   const toggleBtn  = $('#theme-toggle-btn');
@@ -532,7 +604,7 @@ function debounce(fn, delay = 100) {
   }
 })();
 
-/* ─── 13. PEOPLE CARD REVEAL (staggered) ──────────────── */
+/* ─── 14. PEOPLE CARD REVEAL (staggered) ──────────────── */
 (function initPeopleReveal() {
   const cards = $$('.people-card');
 
@@ -559,7 +631,7 @@ function debounce(fn, delay = 100) {
   if (grid) obs.observe(grid);
 })();
 
-/* ─── 14. PARALLAX HERO (subtle) ──────────────────────── */
+/* ─── 15. PARALLAX HERO (subtle) ──────────────────────── */
 (function initParallax() {
   const hero   = $('.hero');
   const slides = $$('.slide');
