@@ -36,19 +36,29 @@ function debounce(fn, delay = 100) {
   const preloader = $('#preloader');
   if (!preloader) return;
 
-  // Hide after page fully loaded (min 1.8 s so animation completes)
-  const minDelay = 1800;
-  const start = Date.now();
+  const minDelay  = 1800;  // minimum ms so the animation looks intentional
+  const maxDelay  = 4000;  // hard cap — never block longer than 4 s
+  const start     = Date.now();
+  let   dismissed = false;
 
+  function dismiss() {
+    if (dismissed) return;
+    dismissed = true;
+    preloader.classList.add('hidden');
+    preloader.addEventListener('transitionend', () => preloader.remove(), { once: true });
+    // Safety net: remove from DOM even if transitionend never fires
+    setTimeout(() => { if (preloader.parentNode) preloader.remove(); }, 800);
+  }
+
+  // Dismiss after page load, but respect minDelay
   window.addEventListener('load', () => {
     const elapsed = Date.now() - start;
-    const wait = Math.max(0, minDelay - elapsed);
-    setTimeout(() => {
-      preloader.classList.add('hidden');
-      // Remove from DOM after transition
-      preloader.addEventListener('transitionend', () => preloader.remove(), { once: true });
-    }, wait);
+    const wait    = Math.max(0, minDelay - elapsed);
+    setTimeout(dismiss, wait);
   });
+
+  // Hard fallback — always dismiss by maxDelay regardless of load state
+  setTimeout(dismiss, maxDelay);
 })();
 
 /* ─── 2. STICKY HEADER ─────────────────────────────────── */
@@ -569,4 +579,4 @@ function debounce(fn, delay = 100) {
 /* Already handled by CSS :not(.scrolled) rules — no JS needed */
 
 /* ─── INIT LOG ─────────────────────────────────────────── */
-console.log('%c Eleanor & James 💍 Wedding Website ', 'background:#c9788a;color:#fff;padding:4px 12px;border-radius:4px;font-size:13px;');
+console.log('%c Erica & John Paul 💍 Wedding Website ', 'background:#c9788a;color:#fff;padding:4px 12px;border-radius:4px;font-size:13px;');
