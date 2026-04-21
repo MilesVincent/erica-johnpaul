@@ -22,11 +22,11 @@
     align-items: center;
     justify-content: center;
     padding-top: max(0px, env(safe-area-inset-top));
-    background: var(--bg-card);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 2px 8px var(--shadow);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(var(--bg-card-rgb, 255,255,255), 0.92);
+    border-bottom: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
   
   #site-header.scrolled {
@@ -215,8 +215,8 @@
   }
   
   body {
-    /* Push page content to account for header and bottom bar */
-    padding-top: calc(56px + max(0px, env(safe-area-inset-top)));
+    /* Only pad for bottom navigation - header is now overlay */
+    padding-top: 0;
     padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
     /* Smooth scrolling momentum on iOS */
     -webkit-overflow-scrolling: touch;
@@ -613,7 +613,7 @@
   
   /* Adjust body padding for landscape */
   body {
-    padding-top: calc(48px + max(0px, env(safe-area-inset-top))) !important;
+    padding-top: 0 !important;
     padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)) !important;
   }
   
