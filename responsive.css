@@ -422,6 +422,7 @@
     max-width: 480px; margin-inline: auto;
   }
   .event-card   { padding: clamp(22px,5vw,32px) clamp(18px,4vw,28px); }
+  .event-card:nth-child(3) { grid-column: auto; max-width: 100%; }
   .event-card h3 { font-size: 1.5rem; }
 
   /* People */

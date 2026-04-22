@@ -602,6 +602,12 @@ ul { list-style: none; }
   position: relative;
   overflow: hidden;
 }
+
+.event-card:nth-child(3) {
+  grid-column: 1 / -1;
+  max-width: 50%;
+  margin: 0 auto;
+}
 .event-card::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0;
