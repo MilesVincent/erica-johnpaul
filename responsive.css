@@ -392,8 +392,8 @@
   .slider-dots { bottom: 20px; }
 
   /* Slider background positioning for mobile */
-  .slide:nth-child(2) { background-position: 65% center !important; } /* Cover3: center couple */
-  .slide:nth-child(3) { background-position: 65% center !important; } /* Cover2: center couple */
+  .slide:nth-child(2) { background-position: 60% center !important; } /* Cover3: center couple */
+  .slide:nth-child(3) { background-position: 60% center !important; } /* Cover2: center couple */
 
   /* Couple */
   .couple-grid {
